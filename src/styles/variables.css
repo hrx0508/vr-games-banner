@@ -1,0 +1,31 @@
+/* Global design tokens only — component styling lives in *.module.css */
+:root {
+  --bg: #080b21;
+  --surface: #10153a;
+  --surface-2: #0b0f2b;
+  --line: rgba(110, 120, 255, 0.28);
+  --line-strong: rgba(135, 130, 255, 0.6);
+  --text: #eef0ff;
+  --muted: #9aa0c6;
+  --gold: #f6c85a;
+  --blue: #6f8dff;
+  --violet: #8b6cff;
+  --danger: #ff7a8a;
+  --success: #4fd1b0;
+  --cta: linear-gradient(135deg, #7a62ff 0%, #4c86ff 100%);
+  --radius-card: 18px;
+  --font: "Poppins", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --max-w: 1440px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* light game theme defaults (overridden per game) */
+  --g-bg-1: #f4f7ff;
+  --g-bg-2: #e6ecff;
+  --g-ink: #1c2140;
+  --g-muted: #6a7094;
+  --g-card: #ffffff;
+  --g-line: #dbe2fb;
+  --g-accent: #6f5bff;
+  --g-accent-2: #4c86ff;
+  --g-soft: #eef1ff;
+}

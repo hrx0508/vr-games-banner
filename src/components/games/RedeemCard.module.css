@@ -1,0 +1,12 @@
+.card { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 20px; background: var(--g-card); border: 1px solid var(--g-line); box-shadow: 0 8px 22px rgba(60, 70, 160, 0.08); position: relative; overflow: hidden; transition: transform 0.25s var(--ease), box-shadow 0.25s; }
+.card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--tint); }
+@media (hover: hover) { .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(60, 70, 160, 0.16); } }
+.top { display: flex; gap: 12px; align-items: center; }
+.icons { display: flex; align-items: center; gap: 6px; color: var(--g-muted); padding: 8px 10px; border-radius: 14px; background: var(--g-soft); flex: none; }
+.icons img { object-fit: contain; } .reward { filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.2)); }
+.copy h3 { margin: 0; font-size: 0.98rem; font-weight: 700; color: var(--g-ink); } .copy p { margin: 2px 0 0; font-size: 0.8rem; color: var(--g-muted); }
+.rate { display: flex; align-items: center; gap: 6px; font-size: 0.88rem; color: var(--g-muted); padding: 8px 12px; background: var(--g-soft); border-radius: 12px; }
+.rate strong { color: var(--g-ink); font-size: 1rem; }
+.btn { border: 0; padding: 12px; border-radius: 13px; font-weight: 700; cursor: pointer; color: #fff; background: linear-gradient(135deg, var(--g-accent), var(--g-accent-2)); transition: transform 0.15s; }
+.btn:active { transform: scale(0.96); }
+.locked .btn { background: #e8ebf8; color: #7a80a6; }

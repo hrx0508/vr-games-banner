@@ -1,0 +1,10 @@
+.page { position: relative; min-height: 100dvh; overflow: hidden; background: var(--bg); padding-bottom: 40px; }
+.glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(800px 380px at 8% 0%, rgba(90, 80, 255, 0.14), transparent 62%), radial-gradient(700px 360px at 100% 30%, rgba(60, 120, 255, 0.1), transparent 60%); }
+.container { position: relative; max-width: var(--max-w); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 768px) { .container { padding: 0 32px; } }
+
+.browse { display: inline-flex; align-items: center; gap: 12px; margin: 24px 0 22px; padding: 14px 26px; border-radius: 99px; text-decoration: none; color: #eef0ff; font-size: 1.02rem; font-weight: 500; background: rgba(12, 18, 62, 0.75); border: 1.5px solid rgba(120, 100, 255, 0.75); transition: transform 0.2s, background 0.25s, gap 0.25s, box-shadow 0.25s; }
+.browse:active { transform: scale(0.96); }
+@media (hover: hover) { .browse:hover { background: rgba(60, 60, 200, 0.4); gap: 16px; box-shadow: 0 0 24px rgba(110, 100, 255, 0.35); } }
+@media (max-width: 420px) { .browse { padding: 12px 22px; font-size: 0.96rem; margin-top: 20px; } }
+@media (min-width: 768px) { .browse { padding: 11px 24px; font-size: 0.95rem; margin: 26px 0 24px; } }

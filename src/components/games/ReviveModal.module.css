@@ -1,0 +1,9 @@
+.score { display: grid; justify-items: center; padding: 14px; margin-bottom: 8px; border-radius: 18px; background: var(--g-soft); }
+.score span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--g-muted); font-weight: 600; }
+.score strong { font-size: 2.6rem; line-height: 1.1; font-weight: 800; color: var(--g-ink); }
+.q { margin: 10px 0 14px; font-weight: 600; color: var(--g-muted); }
+.revive { width: 100%; display: inline-flex; gap: 8px; justify-content: center; align-items: center; border: 0; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 1.05rem; color: #fff; cursor: pointer; background: linear-gradient(135deg, #ff6b88, var(--g-accent)); box-shadow: 0 10px 22px rgba(255, 107, 136, 0.35); transition: transform 0.15s; }
+.revive:active { transform: scale(0.97); }
+.note { display: block; margin: 8px 0 12px; color: var(--g-muted); font-size: 0.75rem; }
+.no { width: 100%; padding: 13px; border-radius: 14px; font-weight: 600; font-size: 0.95rem; cursor: pointer; border: 1.5px solid var(--g-line); background: transparent; color: var(--g-ink); }
+@media (hover: hover) { .no:hover { background: var(--g-soft); } }

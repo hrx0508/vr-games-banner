@@ -1,0 +1,17 @@
+.wrap { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; padding: 16px; background: rgba(240, 244, 255, 0.78); backdrop-filter: blur(6px); }
+.card { width: min(100%, 400px); text-align: center; padding: 26px 22px 22px; border-radius: 26px; background: #fff; border: 1px solid var(--g-line); box-shadow: 0 30px 70px rgba(50, 60, 140, 0.28); }
+.card h2 { margin: 0; font-size: 1.6rem; font-weight: 800; color: var(--g-ink); letter-spacing: 0.02em; }
+.game { margin: 2px 0 14px; color: var(--g-muted); font-size: 0.85rem; font-weight: 600; }
+.score { display: grid; justify-items: center; padding: 12px; border-radius: 18px; background: var(--g-soft); }
+.score span, .earn > span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--g-muted); font-weight: 600; }
+.score strong { font-size: 3rem; line-height: 1.05; font-weight: 800; color: var(--g-ink); }
+.score em { display: inline-flex; gap: 4px; align-items: center; font-style: normal; font-size: 0.75rem; font-weight: 700; color: #b8860b; background: #fff4cf; padding: 3px 10px; border-radius: 99px; margin-top: 4px; }
+.earn { margin: 14px 0 16px; padding: 14px; border-radius: 18px; background: linear-gradient(180deg, #fff8e0, #fff1c4); border: 1px solid #f4dd93; }
+.earn > span { color: #9a7a1c; }
+.row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px; }
+.row img { filter: drop-shadow(0 4px 6px rgba(150, 100, 0, 0.4)); }
+.row strong { font-size: 2.3rem; font-weight: 800; color: #8a6200; font-variant-numeric: tabular-nums; }
+.row small { text-align: left; font-size: 0.7rem; font-weight: 700; color: #9a7a1c; text-transform: uppercase; letter-spacing: 0.05em; }
+.cta { width: 100%; border: 0; padding: 15px; border-radius: 15px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; background: linear-gradient(135deg, var(--g-accent), var(--g-accent-2)); box-shadow: 0 10px 22px color-mix(in srgb, var(--g-accent) 38%, transparent); transition: transform 0.15s, opacity 0.3s; }
+.cta:disabled { opacity: 0.55; cursor: progress; box-shadow: none; }
+.cta:not(:disabled):active { transform: scale(0.97); }

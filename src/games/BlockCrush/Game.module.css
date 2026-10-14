@@ -1,0 +1,2 @@
+.canvas { display: block; width: 100%; height: auto; touch-action: none; border-radius: 22px; background: #eef2ff; border: 3px solid #fff; box-shadow: 0 18px 40px rgba(60, 80, 190, 0.25); cursor: none; -webkit-user-select: none; user-select: none; }
+@media (hover: none) { .canvas { cursor: default; } }

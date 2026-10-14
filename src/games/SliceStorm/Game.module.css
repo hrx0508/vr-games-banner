@@ -1,0 +1,1 @@
+.canvas { display: block; width: 100%; height: auto; touch-action: none; border-radius: 22px; background: #fff3e6; border: 3px solid #fff; box-shadow: 0 18px 40px rgba(220, 110, 40, 0.25); cursor: crosshair; -webkit-user-select: none; user-select: none; }

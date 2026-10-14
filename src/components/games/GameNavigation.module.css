@@ -1,0 +1,5 @@
+.nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); pointer-events: none; }
+.inner { pointer-events: auto; margin: 0 auto; max-width: 420px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid var(--g-line); border-radius: 22px; box-shadow: 0 14px 34px rgba(50, 60, 140, 0.22); }
+.item { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 0; border-radius: 16px; color: var(--g-muted); font-size: 0.75rem; font-weight: 600; text-decoration: none; transition: background 0.25s, color 0.25s, transform 0.15s; }
+.item:active { transform: scale(0.95); }
+.active { color: #fff; background: linear-gradient(135deg, var(--g-accent), var(--g-accent-2)); box-shadow: 0 6px 14px color-mix(in srgb, var(--g-accent) 40%, transparent); }

@@ -1,0 +1,6 @@
+.wrap { max-width: 360px; margin: 18vh auto 0; padding: 28px 22px; text-align: center; border-radius: 24px; background: #fff; border: 1px solid var(--g-line); box-shadow: 0 20px 50px rgba(50, 60, 140, 0.18); color: var(--g-ink); }
+.icon { width: 62px; height: 62px; margin: 0 auto 12px; display: grid; place-items: center; border-radius: 20px; color: #e0556a; background: #ffe7ea; }
+.wrap h2 { margin: 0 0 4px; font-size: 1.3rem; font-weight: 800; } .wrap p { margin: 0 0 18px; color: var(--g-muted); }
+.primary, .secondary { display: block; width: 100%; padding: 14px; border-radius: 14px; font-weight: 700; font-size: 0.98rem; cursor: pointer; }
+.primary { border: 0; color: #fff; background: linear-gradient(135deg, var(--g-accent), var(--g-accent-2)); margin-bottom: 10px; }
+.secondary { border: 1.5px solid var(--g-line); background: transparent; color: var(--g-ink); }

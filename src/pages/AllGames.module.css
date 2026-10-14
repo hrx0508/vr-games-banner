@@ -1,0 +1,20 @@
+.page { position: relative; min-height: 100dvh; background: var(--bg); padding-bottom: 56px; }
+.glow { position: absolute; inset: 0 0 auto 0; height: 520px; pointer-events: none; background: radial-gradient(800px 380px at 8% 0%, rgba(90, 80, 255, 0.14), transparent 62%), radial-gradient(700px 360px at 100% 20%, rgba(60, 120, 255, 0.1), transparent 60%); }
+.container { position: relative; max-width: var(--max-w); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 768px) { .container { padding: 0 32px; } }
+
+.back { display: inline-flex; align-items: center; gap: 10px; margin: 22px 0 4px; padding: 11px 22px; border-radius: 99px; text-decoration: none; color: #eef0ff; font-size: 0.95rem; font-weight: 500; background: rgba(12, 18, 62, 0.75); border: 1.5px solid rgba(120, 100, 255, 0.75); transition: transform 0.2s, background 0.25s, gap 0.25s; }
+.back:active { transform: scale(0.96); }
+@media (hover: hover) { .back:hover { background: rgba(60, 60, 200, 0.4); gap: 14px; } }
+
+.group { margin-top: 18px; }
+.groupHead { display: flex; align-items: baseline; gap: 10px; margin: 0 2px 12px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #aab3ff; }
+.groupHead span { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; text-transform: none; color: var(--muted); }
+.groupHead::after { content: ""; flex: 1; height: 1px; align-self: center; background: linear-gradient(90deg, var(--line), transparent); }
+
+/* 2 columns on phones, then auto-fit as the screen widens */
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 640px) { .grid { gap: 16px; grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); } }
+@media (min-width: 1200px) { .grid { gap: 18px; grid-template-columns: repeat(auto-fill, minmax(186px, 1fr)); } }
+.cell { display: flex; min-width: 0; }
+.cell > * { width: 100%; }

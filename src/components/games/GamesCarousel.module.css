@@ -1,0 +1,22 @@
+.wrap { width: 100%; }
+/* bleed to the screen edge so the next card peeks out like the mockup */
+.viewport { position: relative; margin-inline: -16px; }
+@media (min-width: 768px) { .viewport { margin-inline: -32px; } }
+.track {
+  display: flex; gap: 12px; overflow-x: auto; overflow-y: hidden; padding: 20px 16px 30px;
+  scrollbar-width: none; -ms-overflow-style: none; overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; cursor: grab;
+}
+@media (min-width: 768px) { .track { gap: 16px; padding-inline: 32px; } }
+.track::-webkit-scrollbar { display: none; }
+.track[data-dragging="true"] { cursor: grabbing; }
+.slot { flex: none; display: flex; }
+.fade { position: absolute; top: 0; bottom: 0; width: 18px; pointer-events: none; z-index: 3; }
+.left { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+.right { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+@media (min-width: 992px) { .fade { width: 80px; } }
+
+.controls { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.pauseBtn { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.05); color: #aab3ff; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+.pauseBtn:active { transform: scale(0.9); }
+@media (hover: hover) { .pauseBtn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; } }

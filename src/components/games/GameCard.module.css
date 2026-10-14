@@ -1,0 +1,40 @@
+.card {
+  --card-w: clamp(148px, 44vw, 196px);
+  position: relative; isolation: isolate; flex: 0 0 var(--card-w); width: var(--card-w); overflow: hidden;
+  border-radius: 18px; background: #0d1233; border: 1px solid rgba(118, 100, 255, 0.55);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.38);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
+  -webkit-user-select: none; user-select: none;
+}
+@media (min-width: 768px) { .card { --card-w: 188px; } }
+@media (min-width: 1200px) { .card { --card-w: 198px; } }
+@media (min-width: 1600px) { .card { --card-w: 210px; } }
+@media (hover: hover) {
+  .card:hover { transform: translateY(-5px); border-color: rgba(160, 140, 255, 0.95); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45), 0 0 16px rgba(110, 100, 255, 0.35); }
+}
+.card:active { transform: scale(0.985); }
+
+.art { position: relative; aspect-ratio: 1 / 1.14; overflow: hidden; background: linear-gradient(110deg, #10153a 30%, #1d2360 50%, #10153a 70%) 0 0 / 220% 100%; animation: sk 1.3s linear infinite; }
+.art.ready { animation: none; background: #0d1233; }
+.art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0; transform: scale(1.04); transition: opacity 0.5s, transform 0.8s var(--ease); pointer-events: none; }
+.art.ready img { opacity: 1; transform: scale(1); }
+@media (hover: hover) { .card:hover .art.ready img { transform: scale(1.04); } }
+@keyframes sk { to { background-position: -220% 0; } }
+
+.tok { position: absolute; z-index: 3; top: 8px; right: 8px; }
+
+/* info layer sits on a gradient so text stays readable over any artwork */
+.info {
+  position: absolute; z-index: 2; inset: auto 0 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+  padding: 44px 11px 11px;
+  background: linear-gradient(0deg, rgba(6, 9, 30, 0.97) 0%, rgba(6, 9, 30, 0.88) 42%, rgba(6, 9, 30, 0) 100%);
+}
+.cat { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 500; color: #8e9dff; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: #4fe0a8; box-shadow: 0 0 8px #4fe0a8; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.45; transform: scale(0.8); } }
+.name { margin: 0 0 7px; width: 100%; font-size: 0.98rem; font-weight: 600; line-height: 1.2; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (min-width: 768px) { .name { font-size: 1rem; } }
+
+/* grid mode (All Games page): the grid decides the width */
+.fluid { flex: none; width: 100%; }
+@media (prefers-reduced-motion: reduce) { .art, .dot { animation: none; } .card, .art img { transition: none; } }
