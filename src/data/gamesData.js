@@ -19,7 +19,7 @@ const base = { cost: ENTRY_COST, currency: CURRENCY, playable: false };
 
 /** Single source of truth for all 13 banners. Cards are generated from this list. */
 export const games = [
-  { ...base, id: 1, slug: "blade-master", name: "Blade Master", image: g01, category: "Skill" },
+  { ...base, id: 1, slug: "blade-master", name: "Blade Master", image: g01, category: "Arcade" },
   { ...base, id: 2, slug: "nutcraft", name: "Nutcraft", image: g02, category: "Puzzle" },
   {
     ...base, id: 3, slug: "block-crush", name: "Block Crush", image: g03, category: "Arcade",
@@ -35,7 +35,7 @@ export const games = [
     ],
   },
   {
-    ...base, id: 4, slug: "slice-storm", name: "Slice Storm", image: g04, category: "Action",
+    ...base, id: 4, slug: "slice-storm", name: "Slice Storm", image: g04, category: "Arcade",
     playable: true, engine: "sliceStorm", accent: "#ff8a3d",
     tagline: "Slice the fruit. Dodge the bombs.",
     description: "Swipe across flying fruit to slice it. Chain several in one swipe for bonus points — and stay away from bombs!",
@@ -47,22 +47,22 @@ export const games = [
       { icon: "coins", title: "Earn Game Coins", text: "Your final score is converted into Game Coins." },
     ],
   },
-  { ...base, id: 5, slug: "cosmo-warrior", name: "Cosmo Warrior", image: g05, category: "Shooter" },
+  { ...base, id: 5, slug: "cosmo-warrior", name: "Cosmo Warrior", image: g05, category: "Action" },
   { ...base, id: 6, slug: "toilet-tactics", name: "Toilet Tactics", image: g06, category: "Strategy" },
-  { ...base, id: 7, slug: "word-hunt", name: "Word Hunt", image: g07, category: "Word" },
+  { ...base, id: 7, slug: "word-hunt", name: "Word Hunt", image: g07, category: "Puzzle" },
   { ...base, id: 8, slug: "bubble-blast-legend", name: "Bubble Blast Legend", image: g08, category: "Puzzle" },
   { ...base, id: 9, slug: "merge-master", name: "Merge Master", image: g09, category: "Puzzle" },
   { ...base, id: 10, slug: "wormzy", name: "Wormzy", image: g10, category: "Puzzle" },
   { ...base, id: 11, slug: "aqua-fill", name: "Aqua Fill", image: g11, category: "Puzzle" },
   { ...base, id: 12, slug: "realm-clash", name: "Realm Clash", image: g12, category: "Strategy" },
-  { ...base, id: 13, slug: "bowlexa", name: "Bowlexa", image: g13, category: "Sports" },
+  { ...base, id: 13, slug: "bowlexa", name: "Bowlexa", image: g13, category: "Arcade" },
 ];
 
 export const getGame = (slug) => games.find((g) => g.slug === slug);
 export const playableGames = games.filter((g) => g.playable);
 
 /** Category filter chips, in display order ("All" is added by the UI). Derived so it never drifts from the games list. */
-const CATEGORY_ORDER = ["Puzzle", "Arcade", "Action", "Strategy", "Skill", "Shooter", "Word", "Sports"];
+const CATEGORY_ORDER = ["Puzzle", "Arcade", "Action", "Strategy"];
 export const categories = [
   ...CATEGORY_ORDER.filter((c) => games.some((g) => g.category === c)),
   ...[...new Set(games.map((g) => g.category))].filter((c) => !CATEGORY_ORDER.includes(c)),
