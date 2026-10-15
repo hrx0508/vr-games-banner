@@ -9,19 +9,20 @@ import { useReducedMotion } from "./useReducedMotion";
  *  - mouse drag is added with pointer events
  *  - pauses on hover / touch / wheel / focus / hidden tab / off-screen
  */
-export function useCarousel({ count, speed = 30, resumeDelay = 2200 }) {
+export function useCarousel({ count, speed = 30, resumeDelay = 2200, direction = "rtl", enabled = true, paused = false }) {
   const trackRef = useRef(null);
   const reduced = useReducedMotion();
   const [active, setActive] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const s = useRef({ pos: 0, setW: 0, step: 1, paused: false, timer: null, idle: null, drag: null, moved: false, visible: true, lastActive: 0, locked: false });
   const userPausedRef = useRef(false);
-  userPausedRef.current = userPaused;
+  userPausedRef.current = userPaused || paused; // own toggle OR a parent-controlled pause (second mobile row)
 
   const measure = useCallback(() => {
     const el = trackRef.current;
     if (!el || el.children.length < count * 2) return;
     const st = s.current;
+    if (st.el !== el) { st.el = el; st.ready = false; } // track was (re)mounted
     st.setW = el.children[count].offsetLeft - el.children[0].offsetLeft;
     st.step = el.children[1].offsetLeft - el.children[0].offsetLeft;
     if (!st.ready) { el.scrollLeft = st.setW; st.pos = st.setW; st.ready = true; }
@@ -59,7 +60,7 @@ export function useCarousel({ count, speed = 30, resumeDelay = 2200 }) {
   // measure + animation loop
   useEffect(() => {
     const el = trackRef.current;
-    if (!el) return;
+    if (!enabled || !el) return;
     el.querySelectorAll("[data-dup]").forEach((n) => n.setAttribute("inert", ""));
     measure();
     const ro = new ResizeObserver(() => { const st = s.current; const was = st.setW; measure(); if (was && st.setW && was !== st.setW) { el.scrollLeft = st.pos = st.setW + (st.pos - was) * (st.setW / was); } });
@@ -75,8 +76,9 @@ export function useCarousel({ count, speed = 30, resumeDelay = 2200 }) {
       const dt = Math.min(t - last, 50);
       last = t;
       if (!reduced && !userPausedRef.current && !st.paused && st.visible && st.setW && !st.drag) {
-        st.pos += (speed * dt) / 1000;
-        if (st.pos >= st.setW * 2) st.pos -= st.setW;
+        // rtl: content moves right→left (scrollLeft grows) · ltr: content moves left→right (scrollLeft shrinks)
+        if (direction === "ltr") { st.pos -= (speed * dt) / 1000; if (st.pos < st.setW) st.pos += st.setW; }
+        else { st.pos += (speed * dt) / 1000; if (st.pos >= st.setW * 2) st.pos -= st.setW; }
         el.scrollLeft = st.pos;
         updateActive();
       }
@@ -88,7 +90,7 @@ export function useCarousel({ count, speed = 30, resumeDelay = 2200 }) {
       document.removeEventListener("visibilitychange", onVis);
       clearTimeout(s.current.timer); clearTimeout(s.current.idle);
     };
-  }, [measure, pause, resume, reduced, speed, updateActive]);
+  }, [measure, pause, resume, reduced, speed, updateActive, enabled, direction]);
 
   // user scroll → keep our position in sync, update dots, wrap when settled
   const onScroll = useCallback(() => {
