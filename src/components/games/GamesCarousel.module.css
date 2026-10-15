@@ -9,6 +9,9 @@
 }
 @media (min-width: 768px) { .track { gap: 16px; padding-inline: 32px; } }
 .track::-webkit-scrollbar { display: none; }
+/* phones only: two stacked rows share the viewport, so tighten the vertical padding */
+.top { padding-top: 16px; padding-bottom: 6px; }
+.bottom { padding-top: 6px; padding-bottom: 22px; }
 .track[data-dragging="true"] { cursor: grabbing; }
 .slot { flex: none; display: flex; }
 .fade { position: absolute; top: 0; bottom: 0; width: 18px; pointer-events: none; z-index: 3; }
