@@ -43,7 +43,7 @@ export default function AllGames() {
       <AppHeader />
       <main className={styles.container}>
         <h1 className="sr-only">All Games</h1>
-        <Link to="/games" className={styles.back}><ArrowLeft size={18} /> Games</Link>
+        <Link to="/games" className={styles.back}><ArrowLeft size={18} /> Back</Link>
 
         <CategoryTabs items={tabs} active={active} onSelect={select} />
 
