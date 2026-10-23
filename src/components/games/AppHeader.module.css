@@ -22,8 +22,3 @@
 .bal span { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 8px; padding: 8px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.05); }
 .bal b { font-size: 1.05rem; font-variant-numeric: tabular-nums; } .bal small { grid-column: 2; color: #8d96d8; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .bal img { grid-row: span 2; }
-.demo { margin-top: 6px; padding: 10px; border-radius: 12px; border: 1px dashed var(--line); }
-.demo > small { color: #8d96d8; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; }
-.demo div { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.demo button { display: inline-flex; align-items: center; gap: 5px; padding: 6px 11px; border-radius: 99px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.05); color: #dfe3ff; font-size: 0.74rem; cursor: pointer; }
-@media (hover: hover) { .demo button:hover { border-color: var(--line-strong); } }

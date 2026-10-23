@@ -47,15 +47,6 @@ export default function AppHeader() {
                 <span><img src={tokenIcon} alt="" width="22" height="22" /><b>{tokens}</b><small>Tokens</small></span>
                 <span><img src={coinIcon} alt="" width="22" height="22" /><b>{gameCoins}</b><small>Game Coins</small></span>
               </div>
-
-              <div className={styles.demo}>
-                <small>Demo tools</small>
-                <div>
-                  <button type="button" onClick={() => setTokens(150)}>Tokens 150</button>
-                  <button type="button" onClick={() => setTokens(12)}>Tokens 12</button>
-                  <button type="button" onClick={resetDemo}><RotateCcw size={13} /> Reset</button>
-                </div>
-              </div>
             </motion.nav>
           </>
         )}
