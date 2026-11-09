@@ -1,0 +1,11 @@
+.stars { display: flex; justify-content: center; gap: 6px; margin: 2px 0 12px; }
+.stars span:nth-child(2) { margin-top: -10px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.row div { padding: 10px; border-radius: 14px; background: var(--g-soft); display: grid; gap: 2px; }
+.row span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--g-muted); }
+.row b { font-size: 1.5rem; font-weight: 800; color: var(--g-ink); font-variant-numeric: tabular-nums; }
+.saved { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px 0 14px; font-size: 0.82rem; font-weight: 600; color: #1d9b78; }
+.next, .collect { width: 100%; padding: 14px; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: transform 0.15s; }
+.next:active, .collect:active { transform: scale(0.97); }
+.next { border: 0; color: #fff; background: linear-gradient(135deg, var(--g-accent), var(--g-accent-2)); box-shadow: 0 10px 22px color-mix(in srgb, var(--g-accent) 38%, transparent); }
+.collect { margin-top: 8px; border: 1.5px solid var(--g-line); background: transparent; color: var(--g-ink); }

@@ -1,4 +1,4 @@
-.wrap { position: sticky; top: 0; z-index: 20; padding: 10px 0; margin: 0 -16px; padding-inline: 16px; background: rgba(8, 11, 33, 0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.wrap { position: sticky; top: 0; z-index: 20; padding: 10px 0; margin: 0 -16px; padding-inline: 16px; background: rgba(22, 24, 39, 0.8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 @media (min-width: 768px) { .wrap { margin: 0 -32px; padding-inline: 32px; } }
 .bar { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 6px; scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
 .bar::-webkit-scrollbar { display: none; }

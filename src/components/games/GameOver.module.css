@@ -15,3 +15,6 @@
 .cta { width: 100%; border: 0; padding: 15px; border-radius: 15px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; background: linear-gradient(135deg, var(--g-accent), var(--g-accent-2)); box-shadow: 0 10px 22px color-mix(in srgb, var(--g-accent) 38%, transparent); transition: transform 0.15s, opacity 0.3s; }
 .cta:disabled { opacity: 0.55; cursor: progress; box-shadow: none; }
 .cta:not(:disabled):active { transform: scale(0.97); }
+
+.lv { margin: 10px 0 0; font-size: 0.82rem; font-weight: 600; color: #1d9b78; }
+.card .lv + .earn { margin-top: 10px; }

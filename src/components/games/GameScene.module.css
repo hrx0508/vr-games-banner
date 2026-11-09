@@ -1,0 +1,41 @@
+.stage { position: relative; isolation: isolate; overflow: hidden; display: grid; place-items: center; width: 100%; min-height: 330px; border-radius: 32px; border: 1px solid var(--g-line); box-shadow: 0 20px 50px color-mix(in srgb, var(--g-accent) 22%, transparent); }
+@media (min-width: 992px) { .stage { min-height: 560px; } }
+.poster { position: relative; z-index: 3; width: min(54vw, 210px); aspect-ratio: 640 / 781; border-radius: 22px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 24px 44px rgba(20, 30, 90, 0.35), 0 4px 10px rgba(20, 30, 90, 0.2); }
+.poster img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+@media (min-width: 992px) { .poster { width: min(100%, 320px); } }
+
+/* ───────── Block Crush: blueprint grid, glossy blocks, bouncing ball ───────── */
+.bc { background: linear-gradient(160deg, #e6eeff 0%, #f6f9ff 55%, #dbe6ff 100%); }
+.bc .poster { animation: bcFloat 6s ease-in-out infinite; }
+@keyframes bcFloat { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
+.grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(90, 108, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 108, 255, 0.1) 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(ellipse at center, #000 40%, transparent 85%); -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 85%); }
+.brick { position: absolute; z-index: 1; width: 56px; height: 24px; border-radius: 8px; background: var(--c); box-shadow: inset 0 6px 0 rgba(255, 255, 255, 0.35), 0 8px 16px color-mix(in srgb, var(--c) 40%, transparent); left: calc(4% + (var(--i) * 9.2%)); top: calc(5% + (var(--i) * 7%)); animation: bcDrift calc(5s + var(--i) * 0.5s) ease-in-out infinite alternate; }
+.brick:nth-child(even) { top: auto; bottom: calc(24% - (var(--i) * 1.6%)); }
+@keyframes bcDrift { to { transform: translate(14px, -18px) rotate(10deg); } }
+.court { position: absolute; z-index: 2; left: 8%; right: 8%; bottom: 14px; height: 70px; }
+.ball { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #26306b; box-shadow: 0 0 0 3px rgba(246, 200, 90, 0.6), 0 4px 10px rgba(30, 40, 110, 0.4); animation: ballX 5.2s linear infinite alternate, ballY 1.3s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate; }
+.paddle { position: absolute; bottom: 0; width: 76px; height: 12px; border-radius: 7px; background: linear-gradient(90deg, #8b6cff, #4c86ff); box-shadow: 0 6px 14px rgba(76, 134, 255, 0.45); animation: padX 5.2s linear infinite alternate; }
+@keyframes ballX { from { left: 0; } to { left: calc(100% - 16px); } }
+@keyframes ballY { from { bottom: 14px; } to { bottom: 150px; } }
+@keyframes padX { from { left: calc(0px - 30px); } to { left: calc(100% - 46px); } }
+
+/* ───────── Slice Storm: citrus sunburst, flying fruit, slash ───────── */
+.ss { background: radial-gradient(circle at 50% 42%, #fff8ec 0%, #ffe9d2 60%, #ffdcbd 100%); border-radius: 46% 54% 40% 60% / 36% 40% 60% 64%; }
+@media (max-width: 480px) { .ss { border-radius: 42px; } }
+.rays { position: absolute; inset: -40%; z-index: 0; background: repeating-conic-gradient(from 0deg, rgba(255, 150, 60, 0.16) 0deg 9deg, transparent 9deg 22deg); animation: spin 60s linear infinite; mask-image: radial-gradient(circle, #000 18%, transparent 62%); -webkit-mask-image: radial-gradient(circle, #000 18%, transparent 62%); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.sun { position: absolute; z-index: 1; width: 62%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255, 190, 90, 0.55), rgba(255, 190, 90, 0) 68%); animation: pulse 4s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.12); opacity: 0.8; } }
+.ss .poster { transform: rotate(3deg); animation: ssFloat 5s ease-in-out infinite; }
+@keyframes ssFloat { 0%, 100% { transform: rotate(3deg) translateY(0); } 50% { transform: rotate(1deg) translateY(-9px); } }
+.fruit { position: absolute; z-index: 2; font-size: calc(30px + var(--i) * 2.5px); left: calc(2% + var(--i) * 12.2%); bottom: -12%; opacity: 0.95; filter: drop-shadow(0 6px 6px rgba(150, 70, 0, 0.25)); animation: arc calc(6.5s + var(--i) * 0.55s) cubic-bezier(0.3, 0.1, 0.5, 1) infinite; animation-delay: calc(var(--i) * -1.25s); }
+@keyframes arc { 0% { transform: translateY(0) rotate(0); } 45% { transform: translateY(-300px) translateX(20px) rotate(200deg); } 100% { transform: translateY(40px) translateX(-24px) rotate(420deg); opacity: 0.9; } }
+.slash { position: absolute; z-index: 4; left: -10%; top: 36%; width: 120%; height: 5px; border-radius: 5px; background: linear-gradient(90deg, transparent, #fff 35%, rgba(255, 140, 50, 0.9) 60%, transparent); box-shadow: 0 0 16px rgba(255, 150, 60, 0.8); transform: rotate(-18deg) scaleX(0); transform-origin: left center; animation: slash 4.4s ease-in-out infinite; }
+.slash2 { top: 56%; transform: rotate(14deg) scaleX(0); animation-delay: 2.2s; }
+@keyframes slash { 0% { transform: rotate(-18deg) scaleX(0); opacity: 0; } 6% { opacity: 1; } 16% { transform: rotate(-18deg) scaleX(1); } 30%, 100% { transform: rotate(-18deg) scaleX(1); opacity: 0; } }
+.slash2 { animation-name: slash2; }
+@keyframes slash2 { 0% { transform: rotate(14deg) scaleX(0); opacity: 0; } 6% { opacity: 1; } 16% { transform: rotate(14deg) scaleX(1); } 30%, 100% { transform: rotate(14deg) scaleX(1); opacity: 0; } }
+.drop { position: absolute; z-index: 2; width: 10px; height: 10px; border-radius: 50%; background: #ff8a3d; left: calc(14% + var(--i) * 13%); top: calc(24% + (var(--i) % 3) * 18%); opacity: 0; animation: drop 3.4s ease-out infinite; animation-delay: calc(var(--i) * 0.55s); }
+@keyframes drop { 0% { transform: scale(0.2); opacity: 0; } 25% { opacity: 0.85; } 100% { transform: translate(14px, 46px) scale(1); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) { .stage *, .stage { animation: none !important; } }

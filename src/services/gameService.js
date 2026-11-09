@@ -24,10 +24,10 @@ export async function startSession(slug) {
  * Mock of POST /games/sessions/:id/finish.
  * The UI must display the *backend-confirmed* reward returned here.
  */
-export async function finishSession({ slug, sessionId, score }) {
+export async function finishSession({ slug, sessionId, score, levelsCleared = 0 }) {
   await sleep(250);
   active.delete(sessionId);
-  return { sessionId, score, reward: calculateReward(slug, score), confirmed: true };
+  return { sessionId, score, reward: calculateReward(slug, score, levelsCleared), confirmed: true };
 }
 
 export const isSessionActive = (id) => active.has(id);

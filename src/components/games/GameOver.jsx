@@ -6,7 +6,7 @@ import RewardFlight from "./RewardFlight";
 import styles from "./GameOver.module.css";
 
 /** Final result: calculates → shows reward → flies coins to the balance → lets the user return. */
-export default function GameOver({ game, score, reward, isBest, landed, onLanded, onContinue }) {
+export default function GameOver({ game, score, reward, isBest, levelsCleared = 0, landed, onLanded, onContinue }) {
   const coinRef = useRef(null);
   const ready = reward !== null;
   return (
@@ -15,6 +15,7 @@ export default function GameOver({ game, score, reward, isBest, landed, onLanded
         <h2>Game Over</h2>
         <p className={styles.game}>{game.name}</p>
         <div className={styles.score}><span>Score</span><strong>{score}</strong>{isBest && <em><Trophy size={13} /> New best!</em>}</div>
+        {levelsCleared > 0 && <p className={styles.lv}>{levelsCleared} {levelsCleared === 1 ? "level" : "levels"} cleared this run</p>}
         <div className={styles.earn}>
           <span>You earned</span>
           <div className={styles.row}>

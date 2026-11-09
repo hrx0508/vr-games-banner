@@ -14,13 +14,14 @@ const seed = () => ({
   ],
   seenGuides: {},
   best: {},
+  progress: {}, // { [slug]: { unlocked: 3, stars: {1:3,2:2}, cleared: 2 } }
   lastGame: null,
 });
 
 function load() {
   try {
     const raw = JSON.parse(localStorage.getItem(KEY));
-    return raw ? { ...seed(), ...raw, wallet: { ...seed().wallet, ...raw.wallet } } : seed();
+    return raw ? { ...seed(), ...raw, wallet: { ...seed().wallet, ...raw.wallet }, progress: raw.progress || {} } : seed();
   } catch {
     return seed();
   }
@@ -41,6 +42,12 @@ function reducer(s, a) {
       if (o.id === "tokens") next.tokens = s.tokens + o.amount;
       else next.wallet = { ...s.wallet, [o.walletKey]: s.wallet[o.walletKey] + o.amount };
       return next;
+    }
+    case "COMPLETE_LEVEL": {
+      const prev = s.progress[a.slug] || { unlocked: 1, stars: {} };
+      const stars = { ...prev.stars, [a.level]: Math.max(prev.stars[a.level] || 0, a.stars) };
+      const unlocked = Math.min(a.total, Math.max(prev.unlocked, a.level + 1));
+      return { ...s, progress: { ...s.progress, [a.slug]: { unlocked, stars, cleared: Object.keys(stars).length } } };
     }
     case "RESET": return seed();
     default: return s;
@@ -80,6 +87,8 @@ export function GameCoinProvider({ children }) {
     setTokens: (n) => dispatch({ type: "SET_TOKENS", n }),
     markGuideSeen: (slug) => dispatch({ type: "GUIDE_SEEN", slug }),
     recordScore: (slug, score) => dispatch({ type: "BEST", slug, score }),
+    /** Saves a cleared level immediately and unlocks the next one (persisted in localStorage). */
+    completeLevel: (slug, level, stars, total) => dispatch({ type: "COMPLETE_LEVEL", slug, level, stars, total }),
     setLastGame: (slug) => dispatch({ type: "LAST_GAME", slug }),
     resetDemo: () => dispatch({ type: "RESET" }),
   }), [state, spendTokens, redeem]);
